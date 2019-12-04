@@ -1,15 +1,15 @@
 class Rosecollector::CLI
     
     def call
-        puts "Roses Rose Roses"
+        puts "Roses Rose Roses, get your roses!"
         get_roses
         menu
     end
 
     def get_roses
-        @roses = Rosecollector::Roses.all
+        @roses = Rosecollector::Roses.scrape_site
         @roses.each.with_index(1) do |rose, i|
-            puts "#{i}. #{rose.name} #{rose.price}"
+            puts "#{i}. #{rose.name}"
         end
     end
 
@@ -20,13 +20,19 @@ class Rosecollector::CLI
         while input != "exit"
             input = gets.strip.downcase
             if input.to_i > 0
-                puts @roses[input.to_i-1]
+                rose = @roses[input.to_i-1]
+                puts "#{rose.name}"
+                puts "#{rose.url}"
+                puts "#{rose.price}"
+                puts "#{rose.description}"
+                puts "Type 'list' to view the list again, or 'exit'"
             elsif input =="list"
-                get_rose
+                get_roses
             else
-                puts "not sure type list or exit"
-            end   
+                puts "We don't have that, type 'list' or 'exit'"
+            end 
         end
+        goodbye  
     end
 
     def goodbye
