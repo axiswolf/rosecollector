@@ -1,6 +1,3 @@
-require "rosecollector/version"
-
-module Rosecollector
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./rosecollector/version"
+require_relative './rosecollector/cli'
+require_relative './rosecollector/roses'
