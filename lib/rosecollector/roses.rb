@@ -1,20 +1,41 @@
+require 'nokogiri'
+require 'open-uri'
+require 'pry'
+
 class Rosecollector::Roses
     attr_accessor :name, :price, :url
     def self.all
-        #  need to scrape these 
-        Rosecollector::RoseScraper.new
 
-        rose_1 = self.new
-        rose_1.name = "rose 1 name"
-        rose_1.price = "$27"
-        rose_1.url = "url"
-        
-        rose_2 = self.new
-        rose_2.name = "rose 2 name"
-        rose_2.price = "$27"
-        rose_2.url = "url"
-        
-        [rose_1, rose_2]
+    end
+
+    def self.scrape_site
+        doc = Nokogiri::HTML(open("https://www.edmundsroses.com/category/8"))
+
+        # rose_names = []
+        # rose_prices = []
+
+        doc.each do |rose|
+            rose = self.new
+        names = doc.css("h2")
+        #names.each do |name|
+            n = rose.css("h2")
+            rose.name = n.text.strip
+            #rose_names << name.text.strip
+        #end
+
+        prices = doc.css(".price")
+        #prices.each do |price|
+            p = rose.css(".price")
+            rose.price = p.text.strip
+            #rose_prices << price.text.strip
+        end
+
+    end
+
+    def self.scrape_roses
+        roses = []
+        roses << self.scrape_site
+        roses
     end
 
 end
