@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require_relative '../config/environment'
 require './lib/rosecollector'
 
 Rosecollector::CLI.new.call

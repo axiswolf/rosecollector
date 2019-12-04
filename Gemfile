@@ -1,4 +1,9 @@
 source "https://rubygems.org"
-
-# Specify your gem's dependencies in rosecollector.gemspec
-gemspec
+gem "rspec"
+gem "sinatra"
+gem "nokogiri"
+gem "pry"
+ 
+group :development do
+gem "pry"
+end
