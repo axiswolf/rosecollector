@@ -9,7 +9,7 @@ class Rosecollector::Roses
         doc = Nokogiri::HTML(open("https://www.edmundsroses.com/category/8"))
 
         roses = []
-        rose_count = 0
+        # rose_count = 0
 
         doc.css("section.product").each do |r|
             rose = self.new
@@ -23,10 +23,10 @@ class Rosecollector::Roses
                 doc2 = Nokogiri::HTML(open(rose.url))
                 rose.description = doc2.css("div.prod_desc").text.strip
             roses << rose
-            rose_count += 1
+            # rose_count += 1
         end
         roses
-        rose_count
+        # rose_count
     end
 
 end
