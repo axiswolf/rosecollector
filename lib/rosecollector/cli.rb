@@ -22,10 +22,10 @@ class Rosecollector::CLI
             input = gets.strip.downcase
             if input.to_i > 0 && input.to_i <= @roses.count
                 rose = @roses[input.to_i-1]
-                puts "#{@rose.name}"
-                puts "#{@rose.url}"
-                puts "#{@rose.price}"
-                puts "#{@rose.description}"
+                puts "#{rose.name}"
+                puts "#{rose.url}"
+                puts "#{rose.price}"
+                puts "#{rose.description}"
                 puts "Type 'list' to view the list again, or 'exit'"
             elsif input =="list"
                 get_roses

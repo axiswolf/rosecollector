@@ -22,7 +22,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Using this gem is pretty simple. 
+Make sure you type 'bundle install' on your console before doing anything.
+...then follow these steps:
+1. Type './bin/rosecollector' in your terminal
+2. From there, you will notice a list of roses with its index. Type a number for more details.
+3. type 'list' to go back to your list, 'exit' to exit
+
+That's all!
 
 ## Development
 

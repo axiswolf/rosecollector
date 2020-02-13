@@ -7,7 +7,7 @@ class Rosecollector::Roses
 
     def self.scrape_site
         doc = Nokogiri::HTML(open("https://www.edmundsroses.com/category/8"))
-        @@roses = []
+        @roses = []
         doc.css("section.product").each do |r|
             rose = self.new
             rose.name = r.css("h2").text.strip
@@ -15,9 +15,9 @@ class Rosecollector::Roses
             rose.url = "https://www.edmundsroses.com" + r.css(".image a").attr("href")
                 doc2 = Nokogiri::HTML(open(rose.url))
                 rose.description = doc2.css("div.prod_desc").text.strip
-            @@roses << rose
+            @roses << rose
         end
-        @@roses
+        @roses
     end
 
 end
